@@ -11,7 +11,10 @@ Plugin de emotion
 
 ##Exemplo
        $(document).ready(function () {
-            $("#element").emotions();
+            $("#element").emotions({ campoMensagemID:'#txtMensagem', 
+                                     btnEnviaMensagemID: '#btnEnviar',
+                                     listaEmotionsView:  '#listaExibiEmotions',
+                                     exibeMensagemView:  '#exibeMensagens'});
         });
 
 Pluing de emotions reutilizavél desenvolvido por @lucasVinicius(Eu mesmo), para aplicações e apis WEB.
