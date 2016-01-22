@@ -1,0 +1,72 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Facebook Style Emotions Jquery Plugin</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <link href="css.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="lv.emotions.js"></script>  
+    <style>
+        body, textarea {
+            font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-family: 'Raleway', Helvetica, sans-serif;
+            font-size: 60px;
+            color: #000;
+            font-weight: 500;
+            margin: 10px 0px 10px 0px;
+        }
+
+        #submit_button {
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        #sample_area {
+            width: 470px;
+        }
+
+        #q {
+            font-size: 11px;
+            margin: 10px 0px 10px 0px;
+        }
+
+        p {
+            background-color: #fff;
+            margin: 5px 0px 5px 0px;
+            padding: 5px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body style="background-color:#dedede">
+    <div style="width:840px;margin:0px auto">
+        <h1>Emotions</h1>
+        <div id="MontaEmotions">
+            <!-- Estrutura básica-->
+            <input id="txtMensagem" style="width:400px" />
+            <button type="button" name="btnEnviarMensagem" id="btnEnviarMensagem" value="Submit">Enviar</button>
+            <br />
+            <br />
+            <div id="lista-emotions"></div>
+            <br />
+            <div id="showHere" style="min-height:230px">
+            </div>
+            <!-- Fim -->
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#MontaEmotions").emotions();
+        });
+    </script>
+</body>
+</html>
