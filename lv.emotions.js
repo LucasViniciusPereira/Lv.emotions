@@ -9,10 +9,10 @@
     $.fn.emotions = function (options) {
         // Definição dos valores padrões
         var arrayEmotions = {
-            "0": "Undefined", "1": "o:)", "2": ":3", "3": "o.O", "4": ":'(", "5": "3:)", "6": ":(", "7": ":O", "8": "8)", "9": ":D",
-            "10": "&gt:(", "11": "<3", "12": "^_^", "13": ":*", "14": ":v", "15": ":)", "16": "-_-", "17": "8|", "18": ":p", "19": ":/", "20": "&gt:O", "21": ";)"
+            "0": "Undefined", "1": "o:)", "2": ":3", "3": "o.O", "4": ":'(", "5": "3:)", "6": ":(", "7": ":O", "8": "88)", "9": ":D",
+            "10": "s2", "11": "<3", "12": "-_^", "13": ":*", "14": ":v", "15": ":}~", "16": "´x_x´", "17": "8|", "18": ":p", "19": ":/", "20": "&gt:Z", "21": ";["
         };
-        var nameEmotions = ["undefined", "angel", "colonthree", "confused", "cry", "devil", "frown", "gasp", "glasses", "grin", "grumpy", "heart", "kiki", "kiss", "pacman", "smile", "squint", "sunglasses", "tongue", "unsure", "upset", "wink"];
+        var nameEmotions = ["undefined", "angel", "smiling", "confused", "cry", "devil", "frown", "wonder", "gratters", "grin", "love", "heart", "boredom", "kiss", "shame", "funny", "squint", "sunglasses", "tongue", "unsure", "sleep", "nervous"];
         
         var defaults = {
             'path': 'img-emotions/',
@@ -52,7 +52,7 @@
         *_name =>   Qual o nome do arquivo da imagem
         */
         $.fn.montaImagemEmotion = function (_name) {
-            return "<img src='" + settings.path + _name + settings.extension + "' />";
+            return "<img class='img-emotion' src='" + settings.path + _name + settings.extension + "' />";
         }
 
         // Geração das settings do seu plugin

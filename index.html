@@ -9,33 +9,6 @@
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="lv.emotions.js"></script>  
     <style>
-        body, textarea {
-            font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
-            font-size: 14px;
-        }
-
-        h1 {
-            font-family: 'Raleway', Helvetica, sans-serif;
-            font-size: 60px;
-            color: #000;
-            font-weight: 500;
-            margin: 10px 0px 10px 0px;
-        }
-
-        #submit_button {
-            padding: 5px;
-            font-size: 14px;
-        }
-
-        #sample_area {
-            width: 470px;
-        }
-
-        #q {
-            font-size: 11px;
-            margin: 10px 0px 10px 0px;
-        }
-
         p {
             background-color: #fff;
             margin: 5px 0px 5px 0px;
@@ -44,6 +17,8 @@
             -moz-border-radius: 5px;
             -webkit-border-radius: 5px;
         }
+        .img-emotion{ width: 26px; cursor: pointer; }
+        a > .img-emotion { margin-right: 4px;}
     </style>
 </head>
 
@@ -65,7 +40,7 @@
     </div>
     <script>
         $(document).ready(function () {
-            $("#MontaEmotions").emotions();
+            $("#MontaEmotions").emotions({ extension : '.png'});
         });
     </script>
 </body>
