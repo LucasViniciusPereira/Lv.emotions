@@ -41,6 +41,14 @@
     <script>
         $(document).ready(function () {
             $("#MontaEmotions").emotions({ extension : '.png'});
+
+            $("#btnEnviarMensagem").click(function(){
+				msg = $(this).retornaMensagemEmotion($("#txtMensagem").val());
+
+	            $("#showHere").append('<p>' + msg + '</p>');
+	            $("#txtMensagem").val('');
+	            $("#txtMensagem").focus();
+            });
         });
     </script>
 </body>
