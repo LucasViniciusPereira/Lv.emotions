@@ -13,15 +13,19 @@
             "10": "s2", "11": "<3", "12": "-_^", "13": ":*", "14": ":v", "15": ":}~", "16": "´x_x´", "17": "8|", "18": ":p", "19": ":/", "20": "&gt:Z", "21": ";["
         };
         var nameEmotions = ["undefined", "angel", "smiling", "confused", "cry", "devil", "frown", "wonder", "gratters", "grin", "love", "heart", "boredom", "kiss", "shame", "funny", "squint", "sunglasses", "tongue", "unsure", "sleep", "nervous"];
-        
+
         var defaults = {
             'path': 'img-emotions/',
             'extension': '.gif',
             'campoMensagemID': '#txtMensagem',
             'btnEnviaMensagemID': '#btnEnviarMensagem',
             'listaEmotionsView': '#lista-emotions',
-            'exibeMensagemView': '#showHere'
+            'exibeMensagemView': '#showHere',
+            'elementoRetorno': "p"
         };
+
+        // Geração das settings do seu plugin
+        var settings = $.extend({}, defaults, options);
 
         /*
         * Monta a lista de emotions para o usuário clicar no emotion
@@ -30,7 +34,7 @@
             var lista = "";
             $.each(nameEmotions, function (key, value) {
                 if (value != 'undefined')
-                    lista = lista + "<a onclick='$(this).recuperarEmotion(" + key + ")'>" + $(this).montaImagemEmotion(value) + '</a>';  //<img src='" + path + value + extension + "'></a>";
+                    lista = lista + "<a onclick='$(this).recuperarEmotion(" + key + ")'>" + $(this).montaImagemEmotion(value) + '</a>';
             });
             $(settings.listaEmotionsView).prepend(lista);
         };
@@ -55,37 +59,33 @@
             return "<img class='img-emotion' src='" + settings.path + _name + settings.extension + "' />";
         }
 
-        // Geração das settings do seu plugin
-        var settings = $.extend({}, defaults, options);
+        /*
+        * Retorna a mensagem com os emotion
+        *message =>   Parametro da mensagem
+        */
+        $.fn.retornaMensagemEmotion = function (message) {
+            //Remove os espaços e separa em array
+            textoDigitado = message.trimLeft().trimRight().toString().split(" ");
+            textoCompleto = "";
+
+            //Substitui o carecter digitado pelo emotion
+            for (i = 0; i < textoDigitado.length; i++) {
+                $.each(arrayEmotions, function (key, value) {
+                    if (textoDigitado[i] == value) {
+                        textoDigitado[i] = $(this).montaImagemEmotion(nameEmotions[key]);
+                    }
+                });
+            }
+
+            //Imprime todo o texto digitado
+            $.each(textoDigitado, function (key, value) {
+                textoCompleto = textoCompleto + ' ' + value;
+            });
+
+            return textoCompleto;
+        }
 
         //Init method
         $(this).montaListaEmotionView();
-
-        //Retorno da função
-        return this.each(function () {
-            $(settings.btnEnviaMensagemID).click(function () {
-                //Remove os espaços e separa em array
-                textoDigitado = $(settings.campoMensagemID).val().trimLeft().trimRight().toString().split(" ");
-                textoCompleto = "";
-
-                //Substitui o carecter digitado pelo emotion
-                for (i = 0; i < textoDigitado.length; i++) {
-                    $.each(arrayEmotions, function (key, value) {
-                        if (textoDigitado[i] == value) {
-                            textoDigitado[i] = $(this).montaImagemEmotion(nameEmotions[key]);
-                        }
-                    });
-                }
-
-                //Imprime todo o texto digitado
-                $.each(textoDigitado, function (key, value) {
-                    textoCompleto = textoCompleto + ' ' + value;
-                });
-
-                $(settings.exibeMensagemView).append('<p>' + textoCompleto + '</p>');
-                $(settings.campoMensagemID).val('');
-                $(settings.campoMensagemID).focus();
-            });
-        });
     };
 })(jQuery);
